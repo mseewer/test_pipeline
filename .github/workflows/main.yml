@@ -26,7 +26,7 @@ jobs:
           # The release version to fetch from in the form `tags/<tag_name>` or `<release_id>`.
           # version: # optional, default is latest
           # The name of the file to be downloaded.
-          file: "revanced-cli-.*\.jar"
+          file: "revanced-cli-.*\\.jar"
           # Target file path.
           target: 'revanced-cli.jar'
           # The GitHub token. Typically this will be secrets.GITHUB_TOKEN
