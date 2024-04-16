@@ -1,0 +1,19 @@
+on:
+  workflow_dispatch:
+  # schedule:
+  # - cron: "0 2 * * *"
+jobs:
+  my_job:
+    name: test job
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install Java
+        run: sudo apt-get install openjdk-11-jre 
+      - name: Fetch Latest Release
+        uses: gregziegan/fetch-latest-release@v2.0.0
+        with:
+          repo_path: https://github.com/revanced/revanced-patches
+      - run: java -jar revanced-cli.jar -h
+          
+    
