@@ -18,6 +18,21 @@ jobs:
       # get output from previous step
       - run: echo "Latest Release is ${{ steps.fetch-latest-release.outputs.tag_name }}"
       - run: echo "Name is ${{ steps.fetch-latest-release.outputs.name }}"
+      - name: Fetch Github Release Asset
+        uses: dsaltares/fetch-gh-release-asset@1.1.1
+        with:
+          # The `org/repo` containing the release.
+          repo:  ReVanced/revanced-cli
+          # The release version to fetch from in the form `tags/<tag_name>` or `<release_id>`.
+          version: # optional, default is latest
+          # The name of the file to be downloaded.
+          file: revanced-cli.jar
+          # Target file path.
+          # target: # optional
+          # The GitHub token. Typically this will be secrets.GITHUB_TOKEN
+          # token: # optional, default is ${{ github.token }}
+          # Use regex for file input
+          regex: revanced-cli-.*\.jar
       # download is done, now use the downloaded jar file
       - run: ls -l
       - run: java -jar revanced-cli.jar -h
