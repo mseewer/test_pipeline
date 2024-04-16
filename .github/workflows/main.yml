@@ -18,6 +18,8 @@ jobs:
       # get output from previous step
       - run: echo "Latest Release is ${{ steps.fetch-latest-release.outputs.tag_name }}"
       - run: echo "Name is ${{ steps.fetch-latest-release.outputs.name }}"
+      # download is done, now use the downloaded jar file
+      - run: ls -l
       - run: java -jar revanced-cli.jar -h
           
     
