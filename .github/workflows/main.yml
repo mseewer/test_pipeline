@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Install Java
         run: sudo apt-get install openjdk-11-jre 
-      - name: Fetch Github Release Asset
+      - name: Fetch ReVanced CLI
         uses: dsaltares/fetch-gh-release-asset@1.1.1
         with:
           # The `org/repo` containing the release.
@@ -19,14 +19,22 @@ jobs:
           # version: # optional, default is latest
           # The name of the file to be downloaded.
           file: "revanced-cli-.*\\.jar$"
-          # The GitHub token. Typically this will be secrets.GITHUB_TOKEN
-          # token: # optional, default is ${{ github.token }}
           # Use regex for file input
           regex: true
-      # download is done, now use the downloaded jar file
-      - run: ls -l
       - run: mv revanced-cli-*.jar revanced-cli.jar
+      - name: Fetch ReVanced patches
+        uses: dsaltares/fetch-gh-release-asset@1.1.1
+        with:
+          # The `org/repo` containing the release.
+          repo: 'ReVanced/revanced-patches'
+          # The release version to fetch from in the form `tags/<tag_name>` or `<release_id>`.
+          # version: # optional, default is latest
+          # The name of the file to be downloaded.
+          file: "revanced-patches-.*\\.jar$"
+          # Use regex for file input
+          regex: true
       - run: ls -l
+      - run: mv revanced-patches-*.jar revanced-patches.jar
       - run: java -jar revanced-cli.jar -h
           
     
