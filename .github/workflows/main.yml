@@ -11,9 +11,13 @@ jobs:
       - name: Install Java
         run: sudo apt-get install openjdk-11-jre 
       - name: Fetch Latest Release
+        id: fetch-latest-release
         uses: gregziegan/fetch-latest-release@v2.0.0
         with:
           repo_path: ReVanced/revanced-cli
+      # get output from previous step
+      - run: echo "Latest Release is ${{ steps.fetch-latest-release.outputs.tag_name }}"
+      - run: echo "Name is ${{ steps.fetch-latest-release.outputs.name }}"
       - run: java -jar revanced-cli.jar -h
           
     
