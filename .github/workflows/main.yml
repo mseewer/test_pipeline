@@ -35,7 +35,6 @@ jobs:
           regex: true
       - run: ls -l
       - run: mv revanced-patches-*.jar revanced-patches.jar
-      - run: l
       - name: create JSON file
         #       {
         #   "options": {
