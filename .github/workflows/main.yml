@@ -88,8 +88,13 @@ jobs:
       - name: Patch APK
         run: java -jar revanced-cli.jar patch --patch-bundle revanced-patches.jar -m revanced-integrations.apk -o downloads/patched_youtube.apk downloads/original_youtube.apk
       - run: ls -l
+      - run: ls -l downloads/
+      - run: |
+              mkdir upload
+              cp downloads/patched_youtube.apk upload/
+              cp downloads/original_youtube.apk upload/
       - uses: actions/upload-artifact@v4
         with:
           name: My APKs
-          path: downloads/
+          path: upload/
     
