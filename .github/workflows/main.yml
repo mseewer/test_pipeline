@@ -93,12 +93,12 @@ jobs:
               mkdir build
               cp downloads/patched_youtube.apk build/
               cp downloads/original_youtube.apk build/
-      - name: GitHub Releases
-        uses: fnkr/github-action-ghr@v1.3
-        if: startsWith(github.ref, 'refs/tags/')
-        env:
-            GHR_REPLACE: true
-            GHR_PATH: build/
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        # if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            downloads/patched_youtube.apk
+            downloads/original_youtube.apk
           
     
