@@ -66,6 +66,7 @@ jobs:
           file: "^apkmd$"
           # Use regex for file input
           regex: true
+      - run: ls -l
       - run: chmod +x apkmd
       - run: ./apkmd apkmirror_apps.json
       - run: ls -l
