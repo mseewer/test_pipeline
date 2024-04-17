@@ -90,11 +90,14 @@ jobs:
       - run: ls -l
       - run: ls -l downloads/
       - run: |
-              mkdir upload
-              cp downloads/patched_youtube.apk upload/
-              cp downloads/original_youtube.apk upload/
-      - uses: actions/upload-artifact@v4
-        with:
-          name: My APKs
-          path: upload/
+              mkdir build
+              cp downloads/patched_youtube.apk build/
+              cp downloads/original_youtube.apk build/
+      - name: GitHub Releases
+        uses: fnkr/github-action-ghr@v1.3
+        env:
+            GHR_REPLACE: true
+            GHR_PATH: build/
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
     
