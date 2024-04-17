@@ -35,6 +35,18 @@ jobs:
           regex: true
       - run: ls -l
       - run: mv revanced-patches-*.jar revanced-patches.jar
+      - name: fetch revanced integrations
+        uses: dsaltares/fetch-gh-release-asset@1.1.1
+        with:
+          # The `org/repo` containing the release.
+          repo: 'ReVanced/revanced-integrations'
+          # The release version to fetch from in the form `tags/<tag_name>` or `<release_id>`.
+          # version: # optional, default is latest
+          # The name of the file to be downloaded.
+          file: "revanced-integrations-.*\\.apk$"
+          # Use regex for file input
+          regex: true
+      - run: mv revanced-integrations-*.apk revanced-integrations.apk
       - name: create JSON file
         #       {
         #   "options": {
@@ -74,7 +86,10 @@ jobs:
       - name: Generate Options File
         run: java -jar revanced-cli.jar options --path options.json --overwrite revanced-patches.jar
       - name: Patch APK
-        run: java -jar revanced-cli.jar patch --patch-bundle revanced-patches.jar -d downloads/youtube.apk
+        run: java -jar revanced-cli.jar patch --patch-bundle revanced-patches.jar -m revanced-integrations.apk -o downloads/patched_youtube.apk downloads/original_youtube.apk
       - run: ls -l
-      - run: ls -l downloads
+      - uses: actions/upload-artifact@v4
+        with:
+          name: My APKs
+          path: downloads/
     
