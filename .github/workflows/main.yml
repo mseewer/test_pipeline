@@ -35,8 +35,6 @@ jobs:
           regex: true
       - run: ls -l
       - run: mv revanced-patches-*.jar revanced-patches.jar
-      - run: java -jar revanced-cli.jar -h
-      - run: java -jar revanced-cli.jar list-patches --with-packages --with-versions --with-options revanced-patches.jar
       - run: latest_YT_version=$(java -jar revanced-cli.jar list-versions -f com.google.android.youtube revanced-patches.jar | awk '$1 ~ /^[0-9]/{print $1}' | sort -V | tail -n 1)
       - run: echo "Latest YouTube version = $latest_YT_version"
       - name: create JSON file
