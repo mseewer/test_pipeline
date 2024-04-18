@@ -6,7 +6,8 @@ jobs:
   my_job:
     name: test job
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
     steps:
       - name: Install Java
         run: sudo apt-get install openjdk-11-jre 
@@ -83,24 +84,22 @@ jobs:
       - run: ./apkmd apkmirror_apps.json
       - run: ls -l
       - run: ls -l downloads
-      - name: Generate Options File
-        run: java -jar revanced-cli.jar options --path options.json --overwrite revanced-patches.jar
       - name: Patch APK
         run: java -jar revanced-cli.jar patch --patch-bundle revanced-patches.jar -m revanced-integrations.apk -o downloads/patched_youtube.apk downloads/original_youtube.apk
+      - name: Patch APK for root
+        run: java -jar revanced-cli.jar patch --patch-bundle revanced-patches.jar -m revanced-integrations.apk -o downloads/root_patched_youtube.apk --exclude "GmsCore support" downloads/original_youtube.apk
       - run: ls -l
       - run: ls -l downloads/
-      - run: |
-              mkdir build
-              cp downloads/patched_youtube.apk build/
-              cp downloads/original_youtube.apk build/
       - name: Release
         uses: softprops/action-gh-release@v2
         # if: startsWith(github.ref, 'refs/tags/')
         with:
+          name: "Youtube APKs"
           tag_name: "latest"
           body: "Viel Spass"
           files: |
             downloads/patched_youtube.apk
+            downloads/root_patched_youtube.apk
             downloads/original_youtube.apk
           
     
