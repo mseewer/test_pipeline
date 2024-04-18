@@ -97,8 +97,8 @@ jobs:
         uses: softprops/action-gh-release@v2
         # if: startsWith(github.ref, 'refs/tags/')
         with:
-          tag_name: 'Youtube APKs'
-          body: 'Viel Spass'
+          tag_name: "latest"
+          body: "Viel Spass"
           files: |
             downloads/patched_youtube.apk
             downloads/original_youtube.apk
