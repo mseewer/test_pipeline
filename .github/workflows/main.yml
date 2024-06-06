@@ -98,7 +98,7 @@ jobs:
           # The release version to fetch from in the form `tags/<tag_name>` or `<release_id>`.
           # version: # optional, default is latest
           # The name of the file to be downloaded.
-          file: "^app.revanced.android.gms-\\d+-signed.apk$" # app.revanced.android.gms-1-signed.apk or any number
+          file: "app\\.revanced\\.android\\.gms-\\d+-signed\\.apk$" # app.revanced.android.gms-1-signed.apk or any number
           # Use regex for file input
           regex: true
       - run: ls -l
