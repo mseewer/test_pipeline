@@ -101,7 +101,8 @@ jobs:
           file: "^app.revanced.android.gms-\\d+-signed.apk$" # app.revanced.android.gms-1-signed.apk or any number
           # Use regex for file input
           regex: true
-      - run: mv app.revanced.android.gms-*.apk downloads/GmsCore.apk
+      - run: ls -l
+      - run: mv app.revanced.android.gms-.*-signed.apk downloads/GmsCore.apk
       - run: ls -l downloads/
       - name: Release
         uses: softprops/action-gh-release@v2
