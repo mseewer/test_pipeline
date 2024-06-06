@@ -87,8 +87,8 @@ jobs:
       - run: ls -l downloads
       - name: Patch APK
         run: java -jar revanced-cli.jar patch --patch-bundle revanced-patches.jar -m revanced-integrations.apk -o downloads/patched_youtube.apk downloads/original_youtube.apk
-      - name: Patch APK for root
-        run: java -jar revanced-cli.jar patch --patch-bundle revanced-patches.jar -m revanced-integrations.apk -o downloads/root_patched_youtube.apk --exclude "GmsCore support" downloads/original_youtube.apk
+      # - name: Patch APK for root
+      #   run: java -jar revanced-cli.jar patch --patch-bundle revanced-patches.jar -m revanced-integrations.apk -o downloads/root_patched_youtube.apk --exclude "GmsCore support" downloads/original_youtube.apk
       - run: ls -l
       - name: fetch revanced gmscore
         uses: dsaltares/fetch-gh-release-asset@1.1.1
@@ -98,11 +98,11 @@ jobs:
           # The release version to fetch from in the form `tags/<tag_name>` or `<release_id>`.
           # version: # optional, default is latest
           # The name of the file to be downloaded.
-          file: "app\\.revanced\\.android\\.gms-\\d+-signed\\.apk$" # app.revanced.android.gms-1-signed.apk or any number
+          file: "app.revanced.android.gms-\\d+-signed.apk$" # app.revanced.android.gms-1-signed.apk or any number
           # Use regex for file input
           regex: true
       - run: ls -l
-      - run: mv app.revanced.android.gms-.*-signed.apk downloads/GmsCore.apk
+      - run: mv app.revanced.android.gms-*.apk downloads/GmsCore.apk
       - run: ls -l downloads/
       - name: Release
         uses: softprops/action-gh-release@v2
@@ -116,7 +116,7 @@ jobs:
           files: |
             downloads/patched_youtube.apk
             downloads/GmsCore.apk
-            downloads/root_patched_youtube.apk
             downloads/original_youtube.apk
+          # downloads/root_patched_youtube.apk
           
     
