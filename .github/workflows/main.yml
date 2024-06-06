@@ -95,8 +95,8 @@ jobs:
         # if: startsWith(github.ref, 'refs/tags/')
         with:
           name: "Youtube APKs"
-          tag_name: "latest"
-          body: "Viel Spass"
+          tag_name: "$latest_YT_version"
+          body: "Viel Spass, aktuelle Version: $latest_YT_version"
           files: |
             downloads/patched_youtube.apk
             downloads/root_patched_youtube.apk
