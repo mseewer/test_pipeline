@@ -73,6 +73,7 @@ jobs:
       - run: ./apkmd apkmirror_apps.json
       - run: ls -l
       - run: mkdir -p downloads
+      - run: mv ./com.google.android.youtube*.apk downloads/original_youtube.apk
       - run: ls -l downloads
       - name: Patch APK
         run: java -jar revanced-cli.jar patch --patches patches.rvp -o downloads/patched_youtube.apk downloads/original_youtube.apk
