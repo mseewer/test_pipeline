@@ -84,6 +84,7 @@ jobs:
       - run: chmod +x apkmd
       - run: ./apkmd apkmirror_apps.json
       - run: ls -l
+      - run: mkdir -p downloads
       - run: ls -l downloads
       - name: Patch APK
         run: java -jar revanced-cli.jar patch --patch-bundle patches.rvp -m revanced-integrations.apk -o downloads/patched_youtube.apk downloads/original_youtube.apk
