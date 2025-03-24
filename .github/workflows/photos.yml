@@ -82,7 +82,7 @@ jobs:
       - run: ls -l
       - run: chmod +x apkmd
       - run: ./apkmd apkmirror_apps.json
-      
+      - run: mv ./com.google.android.apps.photos*.apk original_photos.apk
       - run: mkdir -p downloads
       - name: Patch APK
         run: java -jar revanced-cli.jar patch --patches patches.rvp -o downloads/hacked_photos.apk original_photos.apk
