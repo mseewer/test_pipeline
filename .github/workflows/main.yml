@@ -101,7 +101,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           name: "Youtube APKs"
-          tag_name: "Latest"
+          tag_name: "${{ env.latest_YT_version }}"
           body: "Viel Spass"
           files: |
             downloads/patched_youtube.apk
