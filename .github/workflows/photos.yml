@@ -13,9 +13,9 @@ jobs:
         uses: actions/setup-java@v4.7.0
         with:
           # The Java version to set up. Takes a whole or semver Java version. See examples of supported syntax in README file
-          java-version: 11
-          distribution: corretto
-          java-package: jre
+          java-version: '11' 
+          distribution: 'corretto'
+          java-package: 'jre' 
 
       - name: Fetch ReVanced CLI
         uses: dsaltares/fetch-gh-release-asset@1.1.1
