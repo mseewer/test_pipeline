@@ -13,8 +13,8 @@ jobs:
         uses: actions/setup-java@v4.7.0
         with:
           # The Java version to set up. Takes a whole or semver Java version. See examples of supported syntax in README file
-          java-version: '11' 
-          distribution: 'corretto'
+          java-version: '11.0.26' 
+          distribution: 'temurin'
           java-package: 'jre' 
 
       - name: Fetch ReVanced CLI
