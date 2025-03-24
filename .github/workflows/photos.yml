@@ -111,6 +111,7 @@ jobs:
         with:
           name: "Google Photos APKs"
           body: "Viel Spass"
+          tag_name: "Latest"
           files: |
             downloads//hacked_photos.apk 
             downloads/GmsCore.apk
